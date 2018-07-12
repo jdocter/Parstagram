@@ -1,6 +1,8 @@
 package com.example.jdocter.parstagram;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +28,11 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // define your fragments here
+        final Fragment createFragment = new CreateFragment();
+
 
         etDescription = findViewById(R.id.etDescription);
         btnCreate = findViewById(R.id.btnCreate);
@@ -40,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
                 final File file = new File(imagePath);
                 final ParseFile parseFile = new ParseFile(file);
 
-                createPost(description,parseFile,user);
+                createPost(description, parseFile, user);
             }
         });
 
@@ -50,9 +56,6 @@ public class HomeActivity extends AppCompatActivity {
                 loadTopPosts();
             }
         });
-
-
-
 
 
     }
@@ -76,24 +79,6 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void loadTopPosts() {
-        final com.example.jdocter.parstagram.model.Post.Query postQuery = new com.example.jdocter.parstagram.model.Post.Query();
-        postQuery.getTop().withUser();
-
-        postQuery.findInBackground(new FindCallback<com.example.jdocter.parstagram.model.Post>() {
-            @Override
-            public void done(List<com.example.jdocter.parstagram.model.Post> objects, ParseException e) {
-                if (e == null) {
-                    for (int i = 0; i < objects.size(); i++) {
-                        Log.d("HomeActivity", "Post[" + i + "]=" + objects.get(i).getDescription()
-                                + "\nusername = "
-                                + objects.get(i).getUser().getUsername());
-                    }
-                }
-
-            }
-        });
-    }
 
 
 }
