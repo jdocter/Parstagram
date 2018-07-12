@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Password"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Search History"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Language"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Privacy"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Blocked Accounts"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Two Factor Authetication"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Security Help"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Push Notifications"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Help Center"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Report a Problem"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Ads"
+                android:textAllCaps="false"
+                android:textSize="24sp" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Terms"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:background="@drawable/borderthin">
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@android:color/transparent"
+                android:gravity="left|center_vertical"
+                android:text="Log out"
+                android:textSize="24sp"
+                android:textAllCaps="false" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</ScrollView>

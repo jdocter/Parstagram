@@ -47,10 +47,14 @@ public class Post extends ParseObject{
             return this;
         }
 
+        public Query dec() {
+            orderByDescending("createdAt");
+            return this;
+        }
+
         public Query withUser() {
             include("user");
             return this;
-
         }
 
     }
