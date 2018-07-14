@@ -2,6 +2,7 @@ package com.example.jdocter.parstagram;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,6 +23,8 @@ public class HomeFragment extends Fragment {
     ArrayList<Post> posts;
     PostAdapter postAdapter;
     RecyclerView rvPosts;
+    private SwipeRefreshLayout swipeContainer;
+
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
@@ -47,6 +50,22 @@ public class HomeFragment extends Fragment {
 
         loadTopPosts();
 
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchTimelineAsync(0);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright);
+
+
     }
 
     private void loadTopPosts() {
@@ -67,5 +86,15 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    public void fetchTimelineAsync(int page) {
+        postAdapter.clear();
+        // ...the data has come back, add new items to your adapter...
+        loadTopPosts();
+        // Now we call setRefreshing(false) to signal refresh has finished
+        swipeContainer.setRefreshing(false);
+
+    }
+
 
 }

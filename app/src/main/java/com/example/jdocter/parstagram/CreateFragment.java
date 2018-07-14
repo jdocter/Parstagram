@@ -1,5 +1,6 @@
 package com.example.jdocter.parstagram;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +38,20 @@ public class CreateFragment extends Fragment {
     private Button btnShare;
     private EditText etCaption;
     private Bitmap bitmapPostImage;
+    private EditText etLocation;
+
+    interface Callback {
+
+        /**
+         * To be called when a post was successfully created.
+         */
+        void onPostCreated();
+    }
+
+    /**
+     * It's a "mask" to our activity so that way we can update it, and not be tightly coupled to it.
+     */
+    private Callback callback;
 
     // private static final String imagePath = "/Users/jdocter/Downloads/twitter-logo.png";
 
@@ -46,11 +61,27 @@ public class CreateFragment extends Fragment {
     public final String APP_TAG = "MyCustomApp";
     public File photoFile;
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof Callback) {
+            callback = (Callback) context;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback = null;
+    }
+
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
+        onLaunchCamera();
         return inflater.inflate(R.layout.fragment_create, parent, false);
     }
 
@@ -63,12 +94,14 @@ public class CreateFragment extends Fragment {
         ivPostImage = view.findViewById(R.id.ivCreatePostImage);
         btnShare = view.findViewById(R.id.btnShare);
         etCaption = view.findViewById(R.id.etCaption);
+        etLocation = view.findViewById(R.id.etLocation);
 
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String caption = etCaption.getText().toString();
+                final String location = etLocation.getText().toString();
                 final ParseUser user = ParseUser.getCurrentUser();
                 final File file;
 
@@ -77,7 +110,7 @@ public class CreateFragment extends Fragment {
                     file = getImageFile(bitmapPostImage);
                     final ParseFile parseFile = new ParseFile(file);
                     // create post
-                    createPost(caption, parseFile, user);
+                    createPost(caption, parseFile, user,location);
                 } catch (IOException e) {
                     Log.e("MainActivity","Bit map could not be converted to ParseFile");
                     e.printStackTrace();
@@ -162,19 +195,21 @@ public class CreateFragment extends Fragment {
 
 
 
-
     // TODO
-    private void createPost(String description, ParseFile image, ParseUser user) {
+    private void createPost(String caption, ParseFile image, ParseUser user, String location) {
         final com.example.jdocter.parstagram.model.Post newPost = new com.example.jdocter.parstagram.model.Post();
-        newPost.setDescription(description);
+        newPost.setDescription(caption);
         //newPost.setImage(image);
         newPost.setUser(user);
+        newPost.setImage(image);
+        newPost.setLocationKey(location);
 
         newPost.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e==null) {
                     Log.d("MainActivity", "Post success");
+                    callback.onPostCreated();
                 } else {
                     Log.e("MainActivity", "Post Failure");
                     e.printStackTrace();

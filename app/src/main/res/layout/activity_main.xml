@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        android:background="@drawable/bottomborder"
+        app:navigationIcon="@drawable/camera_shadow_fill"
         app:logo="@drawable/nav_logo_whiteout"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -18,8 +20,8 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bottom_navigation"
-        android:layout_above="@id/toolbar"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_below="@id/toolbar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="56dp" />
@@ -27,7 +29,7 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         app:menu="@menu/menu_bottom_navigation" />

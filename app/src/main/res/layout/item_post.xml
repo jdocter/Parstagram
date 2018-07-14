@@ -2,40 +2,123 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:layout_marginBottom="@dimen/fab_margin">
 
-    <ImageButton
-        android:id="@+id/ibPostImage"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/image_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPostProfileImage"
-        android:scaleType="fitCenter"
-        app:srcCompat="@android:color/background_light" />
+        android:layout_below="@+id/ivPostProfileImage">
+
+        <ImageButton
+            android:id="@+id/ibPostImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:color/background_light" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/ivPostProfileImage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/instagram_user_filled_24" />
 
 
     <Button
         android:id="@+id/btnPostUsername"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_alignParentTop="true"
-        android:textAllCaps="false"
         android:layout_toEndOf="@+id/ivPostProfileImage"
         android:background="@android:color/transparent"
-        android:text="Username" />
+        android:gravity="left|center_vertical"
+        android:text="Username"
+        android:textAllCaps="false" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/image_container"
+        android:layout_margin="1dp"
+        android:layout_marginLeft="2dp"
+        app:srcCompat="@drawable/ufi_heart" />
+
+    <ImageView
+        android:id="@+id/ivMakeComment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/image_container"
+        android:layout_margin="1dp"
+        android:layout_toEndOf="@+id/ivLike"
+        app:srcCompat="@drawable/ufi_comment" />
+
 
     <TextView
-        android:id="@+id/tvComment"
+        android:id="@+id/tvLikeCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/ibPostImage"
+        android:layout_below="@+id/ivLike"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="1dp"
+        android:text="23 likes"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvCaptionUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvLikeCount"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="5dp"
+        android:text="User"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/image_container"
+        android:layout_below="@+id/tvLikeCount"
+        android:layout_toEndOf="@+id/tvCaptionUser"
         android:text="Comment" />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvCaption"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:text="Timestamp"
+        android:textColor="#7c7c7c"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnPostUsername"
+        android:layout_below="@+id/btnPostUsername"
+        android:text="Location"
+        android:textColor="#7c7c7c" />
 </RelativeLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".SignupActivity">
 
     <ImageView
@@ -13,6 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:tint="@color/white"
         app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <EditText
@@ -21,6 +23,9 @@
         android:layout_height="45dp"
         android:layout_alignTop="@+id/imageView"
         android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_marginTop="100dp"
         android:hint="Email" />
 
@@ -29,6 +34,9 @@
         android:layout_width="291dp"
         android:layout_height="45dp"
         android:layout_alignTop="@+id/etEmail"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:hint="Full name" />
@@ -38,6 +46,9 @@
         android:layout_width="291dp"
         android:layout_height="45dp"
         android:layout_alignTop="@+id/etName"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:hint="Username" />
@@ -47,6 +58,9 @@
         android:layout_width="291dp"
         android:layout_height="45dp"
         android:layout_alignTop="@+id/etNewUser"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:hint="Password" />
@@ -56,10 +70,12 @@
         android:layout_height="45dp"
         android:id="@+id/btnSignup"
         android:text="Sign up"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"
         android:layout_alignTop="@+id/etNewPass"
         android:layout_marginTop="50dp"
-        android:background="@drawable/border"/>
+        android:background="@drawable/borderwhite"/>
 
 </RelativeLayout>

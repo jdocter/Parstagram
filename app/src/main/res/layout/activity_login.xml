@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
@@ -11,17 +12,24 @@
         android:layout_height="45dp"
         android:layout_alignTop="@+id/imageView"
         android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_marginTop="130dp"
         android:hint="Username" />
+
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="291dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/etUsername"
+        android:textColorHint="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        app:passwordToggleEnabled="true"
+        android:backgroundTint="@color/white"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
         android:hint="Password" />
 
     <Button
@@ -31,7 +39,8 @@
         android:layout_alignTop="@+id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:background="@drawable/border"
+        android:textColor="@color/white"
+        android:background="@drawable/borderwhite"
         android:text="Log In" />
 
     <ImageView
@@ -41,6 +50,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
+        android:tint="@color/white"
         app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <Button
@@ -49,8 +59,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:textColor="@color/white"
         android:textAllCaps="false"
-        android:background="@drawable/border"
+        android:background="@drawable/borderwhite"
         android:text="Don't have an account? Sign up." />
 
 </RelativeLayout>
