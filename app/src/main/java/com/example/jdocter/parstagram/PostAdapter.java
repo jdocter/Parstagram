@@ -47,20 +47,43 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @SuppressLint("CheckResult")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         // get the data according to position
-        Post post = (Post) mPosts.get(position);
+        final Post post = (Post) mPosts.get(position);
 
         //populate the views according to this data
-        holder.tvComment.setText(post.getDescription());
+        holder.tvCaption.setText(post.getDescription());
         holder.btnUsername.setText(post.getUser().getUsername());
+        holder.tvCaptionUser.setText(post.getUser().getUsername());
+        holder.tvTimestamp.setText(post.getTimestamp());
+        holder.tvLocation.setText(post.getLocationKey());
+        holder.tvLikeCount.setText(post.getLikeKey() + " likes");
+        String profileUrl = post.getUser().getParseFile("profilePicture").getUrl();
         String imageUrl = post.getImage().getUrl();
+
+        holder.ivLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.ivLike.setImageResource(R.drawable.ufi_heart_active);
+                post.setLikeKey();
+                holder.tvLikeCount.setText(post.getLikeKey() + " likes");
+            }
+
+        });
+
+
 
         // load image using glide
         Glide.with(context)
                 .load(imageUrl)
                 .apply(new RequestOptions().transform(new RoundedCorners(15)))
                 .into(holder.ibPostImage);
+
+        // load image using glide
+        Glide.with(context)
+                .load(profileUrl)
+                .apply(new RequestOptions().transform(new CircleTransform(context)))
+                .into(holder.ivProfileImage);
     }
 
     @Override
@@ -75,8 +98,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         public ImageView ivProfileImage;
         public Button btnUsername;
-        public TextView tvComment;
+        public TextView tvCaption;
+        public TextView tvTimestamp;
         public ImageButton ibPostImage;
+        public TextView tvLocation;
+        public TextView tvLikeCount;
+        public TextView tvCaptionUser;
+        public ImageView ivLike;
 
         public ViewHolder (View itemView) {
             super(itemView);
@@ -85,8 +113,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
             ivProfileImage = (ImageView) itemView.findViewById(R.id.ivPostProfileImage);
             btnUsername = (Button) itemView.findViewById(R.id.btnPostUsername);
-            tvComment = (TextView) itemView.findViewById(R.id.tvComment);
+            tvCaption = (TextView) itemView.findViewById(R.id.tvCaption);
+            tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
             ibPostImage = (ImageButton) itemView.findViewById(R.id.ibPostImage);
+            tvLocation = (TextView) itemView.findViewById(R.id.tvLocation);
+            tvLikeCount = (TextView) itemView.findViewById(R.id.tvLikeCount);
+            tvCaptionUser = (TextView) itemView.findViewById(R.id.tvCaptionUser);
+            ivLike = (ImageView) itemView.findViewById(R.id.ivLike);
             itemView.setOnClickListener(this);
 
         }
@@ -105,10 +138,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
     }
 
+
+    /* Within the RecyclerView.Adapter class */
+
     // Clean all elements of the recycler
     public void clear() {
         mPosts.clear();
         notifyDataSetChanged();
     }
+
 
 }
